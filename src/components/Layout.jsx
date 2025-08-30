@@ -16,7 +16,37 @@ function Layout({ children }) {
         <h2 style={{ color: "#fff", margin: 0 }}>My Website</h2>
         <nav style={{ display: "flex", gap: "15px" }}>
           <NavLink
-            to="/Home"
+            to="/login"
+            style={({ isActive }) => ({
+              color: isActive ? "yellow" : "white",
+              textDecoration: "none",
+              fontWeight: isActive ? "bold" : "normal",
+            })}
+          >
+            log in
+          </NavLink>
+          <NavLink
+            to="/google"
+            style={({ isActive }) => ({
+              color: isActive ? "yellow" : "white",
+              textDecoration: "none",
+              fontWeight: isActive ? "bold" : "normal",
+            })}
+          >
+            Continue with Google
+          </NavLink>
+          <NavLink
+            to="/register"
+            style={({ isActive }) => ({
+              color: isActive ? "yellow" : "white",
+              textDecoration: "none",
+              fontWeight: isActive ? "bold" : "normal",
+            })}
+          >
+            Register
+          </NavLink>
+          <NavLink
+            to="/"
             style={({ isActive }) => ({
               color: isActive ? "yellow" : "white",
               textDecoration: "none",
@@ -68,10 +98,10 @@ function Layout({ children }) {
         </nav>
       </header>
 
-      {/* Main content */}
+
       <main style={{ padding: "20px" }}>{children}</main>
 
-      {/* Footer */}
+     
       <footer
         style={{
           marginTop: "30px",
