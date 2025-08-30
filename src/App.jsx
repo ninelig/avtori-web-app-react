@@ -9,9 +9,12 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import RegisterPage from "./pages/RegisterPage";
 import Google from "./pages/Google";
+import Cart from "./pages/Cart";
+import { CartProvider } from "./providers/CartProvider";
 
 function App() {
   return (
+    <CartProvider> 
     <Router>
       <Layout>
         <Routes>
@@ -24,9 +27,11 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/*" element={<NotFound />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </Layout>
     </Router>
+    </CartProvider>
   );
 }
 

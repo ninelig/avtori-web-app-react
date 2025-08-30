@@ -95,6 +95,16 @@ function Layout({ children }) {
           >
             Terms
           </NavLink>
+          <NavLink
+            to="/cart"
+            style={({ isActive }) => ({
+              color: isActive ? "yellow" : "white",
+              textDecoration: "none",
+              fontWeight: isActive ? "bold" : "normal",
+            })}
+          >
+            Cart
+          </NavLink>
         </nav>
       </header>
 

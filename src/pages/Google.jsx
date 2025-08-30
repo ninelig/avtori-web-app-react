@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import { FcGoogle } from "react-icons/fc"; // Optional: Google icon
+import { FcGoogle } from "react-icons/fc"; // Optional: Google icon
 
 
 function GoogleLogin() {
@@ -38,7 +38,7 @@ function GoogleLogin() {
               : "bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
           }`}
         >
-          {/* <FcGoogle size={24} /> */}
+          <FcGoogle size={26} />
           {googleLoading ? "Logging in..." : "Continue with Google"}
         </button>
       </div>
