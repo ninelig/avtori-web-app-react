@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "name": "Sample Product",
+    "price": 29.99,
+    "quantity": 2,
+    "image": "/images/angel-a.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Another Item",
+    "price": 15.5,
+    "quantity": 1,
+    "image": "/images/behappy.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Another Item",
+    "price": 15.5,
+    "quantity": 1,
+    "image": "/images/body.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Another Item",
+    "price": 15.5,
+    "quantity": 1,
+    "image": "/images/butterfly.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Another Item",
+    "price": 15.5,
+    "quantity": 1,
+    "image": "/images/hearts.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Another Item",
+    "price": 15.5,
+    "quantity": 1,
+    "image": "/images/puppy.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Another Item",
+    "price": 15.5,
+    "quantity": 1,
+    "image": "/images/Woman.jpg"
+  }
+]

@@ -11,6 +11,7 @@ import RegisterPage from "./pages/RegisterPage";
 import Google from "./pages/Google";
 import Cart from "./pages/Cart";
 import { CartProvider } from "./providers/CartProvider";
+import Shop from "./pages/Shop"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
     <Router>
       <Layout>
         <Routes>
+          <Route path="/shop" element={<Shop />} />
           <Route path="/login" element={<Login />} />
           <Route path="/google" element={<Google/>} />
             <Route path="/register" element={<RegisterPage />} />

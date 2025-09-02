@@ -105,6 +105,17 @@ function Layout({ children }) {
           >
             Cart
           </NavLink>
+            <NavLink
+            to="/shop"
+            style={({ isActive }) => ({
+              color: isActive ? "yellow" : "white",
+              textDecoration: "none",
+              fontWeight: isActive ? "bold" : "normal",
+            })}
+          >
+            Shop
+          </NavLink>
+          
         </nav>
       </header>
 
