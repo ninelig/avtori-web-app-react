@@ -1,68 +1,80 @@
-
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 const CartContext = createContext();
+export const useCart = () => useContext(CartContext);
 
-export function CartProvider({ children }) {
-  const [cart, setCart] = useState([
-    {
-      id: 1,
-      name: "Sample Product",
-      price: 29.99,
-      quantity: 2,
-      image: "/images/angel-a.jpg",
-    },
-    {
-      id: 2,
-      name: "Another Item",
-      price: 15.5,
-      quantity: 1,
-      image: "/images/behappy.jpg",
-    },
-    {
-      id: 2,
-      name: "Another Item",
-      price: 15.5,
-      quantity: 1,
-      image: "/images/body.jpg",
-    },
-    {
-      id: 2,
-      name: "Another Item",
-      price: 15.5,
-      quantity: 1,
-      image: "/images/butterfly.jpg",
-    },
-    {
-      id: 2,
-      name: "Another Item",
-      price: 15.5,
-      quantity: 1,
-      image: "/images/hearts.jpg",
-    },
-    {
-      id: 2,
-      name: "Another Item",
-      price: 15.5,
-      quantity: 1,
-      image: "/images/puppy.jpg",
-    },
-    {
-      id: 2,
-      name: "Another Item",
-      price: 15.5,
-      quantity: 1,
-      image: "/images/Woman.jpg",
-    },
-  ]);
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState(() => {
+    const saved = localStorage.getItem("cart");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  // Sync with other tabs/windows
+  useEffect(() => {
+    const syncCart = (e) => {
+      if (e.key === "cart") {
+        setCart(e.newValue ? JSON.parse(e.newValue) : []);
+      }
+    };
+    window.addEventListener("storage", syncCart);
+    return () => window.removeEventListener("storage", syncCart);
+  }, []);
+
+   // Add item or increase quantity
+  const addToCart = (id, quantity = 1) => {
+    setCart((prev) => {
+      const existing = prev.find((item) => item.id === id);
+      if (existing) {
+        return prev.map((item) =>
+          item.id === id ? { ...item, qty: (parseInt(item.qty) || 1) + parseInt(quantity) } : item
+        );
+      }
+      return [...prev, { id, qty: quantity }];
+    });
+  };
+
+  const removeFromCart = (id) => {
+    setCart((prev) => prev.filter((item) => item.id !== id));
+  };
+
+
+  // Clear cart
+  const clearCart = () => setCart([]);
+
+
+  // Increase by 1
+   const increaseQty = (id) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, qty: item.qty + 1 } : item
+      )
+    );
+  };
+
+  const cartLength = useMemo(() => {
+    return cart?.reduce((acc, curr) => acc + curr.qty, 0) || 0;
+  }, [cart])
+
+
+  // Decrease by 1
+  const decreaseQty = (id) => {
+    setCart((prev) =>
+      prev
+        .map((item) =>
+          item.id === id ? { ...item, qty: item.qty - 1 } : item
+        )
+        .filter((item) => item.qty > 0)
+    );
+  };
 
   return (
-    <CartContext.Provider value={{ cart, setCart }}>
+    <CartContext.Provider value={{ cart, cartLength, addToCart, removeFromCart, clearCart, increaseQty, decreaseQty }}>
       {children}
     </CartContext.Provider>
   );
-}
-
-export function useCart() {
-  return useContext(CartContext);
-}
+};

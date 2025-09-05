@@ -1,7 +1,11 @@
 
 import { NavLink } from "react-router-dom";
+import { useCart } from "../providers/CartProvider";
 
 function Layout({ children }) {
+
+  const {cartLength} = useCart();
+
   return (
     <div style={{ fontFamily: "Arial, sans-serif" }}>
       <header
@@ -103,7 +107,7 @@ function Layout({ children }) {
               fontWeight: isActive ? "bold" : "normal",
             })}
           >
-            Cart
+            Cart {cartLength}
           </NavLink>
             <NavLink
             to="/shop"

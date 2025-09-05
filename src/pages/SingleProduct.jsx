@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { fetchProductById } from '../api/productApi';
+import { useCart } from '../providers/CartProvider';
 
 function SingleProduct() {
+
+    const {addToCart} = useCart();
     
     const {productId} = useParams();
 
@@ -13,6 +16,14 @@ function SingleProduct() {
             fetchProductById(productId).then(data => setProduct(data))
         }
     }, [productId])
+
+    const [quantity, setQuantity] = useState(1);
+
+    const doAddToCart = () => {
+      if (product && quantity) {
+        addToCart(product.id, quantity)
+      }
+    }
 
     // mokled aq gaviget produqtis id, amis shemdeg am aidit davfechavt ukve konkretul product da aqve davarenderebt. savaraduod vizuali im komponentshi ukve gaqvs
 
@@ -50,12 +61,16 @@ function SingleProduct() {
               name="quantity"
               min="1"
               defaultValue="1"
+              onChange={setQuantity}
               className="w-20 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-          <button className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition duration-300">
+          <button onClick={doAddToCart} className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition duration-300">
             Add to Cart
           </button>
+{/*           <Link to="/cart" className="ml-5 bg-yellow-500 text-black px-6 py-4 rounded-md hover:bg-blue-600 transition duration-300">
+            Go to Cart
+          </Link> */}
         </div>
       </div>
 
