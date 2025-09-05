@@ -11,7 +11,9 @@ import RegisterPage from "./pages/RegisterPage";
 import Google from "./pages/Google";
 import Cart from "./pages/Cart";
 import { CartProvider } from "./providers/CartProvider";
-import Shop from "./pages/Shop"
+import Shop from "./pages/Shop";
+import SingleProduct from "./pages/SingleProduct";
+// import ProductGrid from "./components/ProductGrid";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/shop" element={<Shop />} />
+          {/* <Route path="/product" element={<ProductGrid />} /> */}
+          <Route path="/products/:productId" element={<SingleProduct />} />
           <Route path="/login" element={<Login />} />
           <Route path="/google" element={<Google/>} />
             <Route path="/register" element={<RegisterPage />} />
