@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
+import { useAuth } from "../providers/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
-function Login() {
+function LoginPage() {
+
+  const navigate = useNavigate();
+  const {login} = useAuth();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -31,19 +37,25 @@ function Login() {
 
     setFormData((prev) => ({ ...prev, loading: true }));
 
+    // Generate fake token
+    const newToken = Math.random().toString(36).substr(2, 16);
+    // Login
+    login(newToken);
+    navigate("/", { replace: true });
+
     // Simulate API call
-    setTimeout(() => {
+/*     setTimeout(() => {
       setFormData((prev) => ({
         ...prev,
         loading: false,
         success: true,
       }));
-    }, 1000);
+    }, 1000); */
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
-      <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
+    // <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+      <div className="max-w-md mx-auto p-6 bg-white rounded-2xl shadow-md">
         <h1 className="text-2xl font-bold text-center mb-6">Login</h1>
 
         {formData.success ? (
@@ -100,10 +112,10 @@ function Login() {
           </p>
         )}
       </div>
-    </div>
+    // </div>
   );
 }
 
-export default Login;
+export default LoginPage;
 
 

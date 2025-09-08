@@ -1,32 +1,56 @@
 import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { Link, useParams } from 'react-router-dom';
-import { fetchProductById } from '../api/productApi';
+import { fetchProductById, fetchProductById1 } from '../api/productApi';
 import { useCart } from '../providers/CartProvider';
+import { toast } from 'react-toastify';
+import Spinner from '../components/ui/Spinner';
+import Alert from '../components/ui/Alert';
 
 function SingleProduct() {
+
+    const [quantity, setQuantity] = useState(1);
 
     const {addToCart} = useCart();
     
     const {productId} = useParams();
 
-    const [product, setProduct] = useState(null);
+   // const [product, setProduct] = useState(null);
 
-    useEffect(() => {
-        if (productId > 0) {
-            fetchProductById(productId).then(data => setProduct(data))
-        }
-    }, [productId])
 
-    const [quantity, setQuantity] = useState(1);
+
+  const { data: product, isLoading, isRefetching, isError, error, refetch } = useQuery(
+    {
+      queryKey: ['product', productId],
+      queryFn: () => fetchProductById(productId),
+      enabled: !!productId, // only run query if productId exists
+      refetchOnWindowFocus: false, // optional
+      //staleTime: 1000 * 60 * 5, // optional: cache for 5 minutes
+    }
+  );
+
+
+
+    if (isLoading || isRefetching) {
+      return <Spinner />
+    }
+  
+    if (isError) {
+      return <Alert type="error" message={error.message} />
+    }
+
+
+
+
 
     const doAddToCart = () => {
       if (product && quantity) {
         addToCart(product.id, quantity)
+        toast.success('პროდუქტი ჩავარდა კალათაში', {position: 'bottom-right',})
       }
     }
 
-    // mokled aq gaviget produqtis id, amis shemdeg am aidit davfechavt ukve konkretul product da aqve davarenderebt. savaraduod vizuali im komponentshi ukve gaqvs
-
+  
 
     if (!product) {
         return <h2>No product available!</h2>
@@ -61,7 +85,8 @@ function SingleProduct() {
               name="quantity"
               min="1"
               defaultValue="1"
-              onChange={setQuantity}
+              value={quantity}
+              onChange={e => setQuantity(e.target.value)}
               className="w-20 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>

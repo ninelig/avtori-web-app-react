@@ -1,38 +1,36 @@
+import { fetchWithErrorHandling, sleep } from "../helpers/utils";
 
-export async function fetchProducts(ids = []) {
-  try {
-    const response = await fetch("/data/products.json"); 
-    if (!response.ok) {
-      throw new Error("Failed to fetch cart data");
-    }
-    const data = await response.json();
 
-    if (ids.length) {
+
+
+export const fetchProducts = async (ids = []) => {
+	
+    const data = await fetchWithErrorHandling( `/data/products.json`);
+
+    // simulate network delay (e.g., 1 second)
+   await sleep(800);
+
+
+   if (ids.length) {
       return data.filter(p => ids.includes(p.id))
     }
     return data;
-
-  } catch (error) {
-    console.error("Error loading cart:", error);
-    return [];
-  }
-}
+};
 
 
 
 
-export async function fetchProductById(id) {
-  try {
-    const response = await fetch("/data/products.json"); 
-    if (!response.ok) {
-      throw new Error("Failed to fetch cart data");
-    }
-    const data = await response.json();
-    const singleProduct = data.find(p => p.id == id) || null;
+export const fetchProductById = async (id) => {
+	  const data = await fetchWithErrorHandling( `/data/products.json`);
+
+
+    // simulate network delay (e.g., 1 second)
+    await sleep(700);
+
+
+    const singleProduct = data.find(p => p.id === parseInt(id)) || null;
     return singleProduct;
-  } catch (error) {
-    console.error("Error loading cart:", error);
-    return null;
-  }
-}
+  
+};
+
 

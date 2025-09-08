@@ -27,11 +27,18 @@ export const CartProvider = ({ children }) => {
 
    // Add item or increase quantity
   const addToCart = (id, quantity = 1) => {
+
+    quantity = parseInt(quantity);
+
+    if (!quantity) {
+      return;
+    }
+
     setCart((prev) => {
       const existing = prev.find((item) => item.id === id);
       if (existing) {
         return prev.map((item) =>
-          item.id === id ? { ...item, qty: (parseInt(item.qty) || 1) + parseInt(quantity) } : item
+          item.id === id ? { ...item, qty: item.qty + quantity } : item
         );
       }
       return [...prev, { id, qty: quantity }];

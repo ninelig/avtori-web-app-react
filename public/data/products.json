@@ -5,7 +5,8 @@
     "price": 29.99,
     "quantity": 2,
     "image": "/images/angel-a.jpg",
-    "description": "Beautiful angelic artwork featuring a serene celestial figure. Perfect for adding a touch of divine inspiration to any room."
+    "description": "Beautiful angelic artwork featuring a serene celestial figure. Perfect for adding a touch of divine inspiration to any room.",
+    "category": "spiritual"
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "price": 15.5,
     "quantity": 1,
     "image": "/images/behappy.jpg",
-    "description": "Uplifting 'Be Happy' motivational print. This cheerful artwork is designed to brighten your day and inspire positivity."
+    "description": "Uplifting 'Be Happy' motivational print. This cheerful artwork is designed to brighten your day and inspire positivity.",
+    "category": "motivational"
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "price": 15.5,
     "quantity": 1,
     "image": "/images/body.jpg",
-    "description": "Elegant body silhouette artwork celebrating the human form. A stylish addition to modern home decor or fitness spaces."
+    "description": "Elegant body silhouette artwork celebrating the human form. A stylish addition to modern home decor or fitness spaces.",
+    "category": "silhouette"
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "price": 15.5,
     "quantity": 1,
     "image": "/images/butterfly.jpg",
-    "description": "Vibrant butterfly canvas print showcasing nature's beauty. This colorful piece adds a lively touch to any wall."
+    "description": "Vibrant butterfly canvas print showcasing nature's beauty. This colorful piece adds a lively touch to any wall.",
+    "category": "nature"
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "price": 15.5,
     "quantity": 1,
     "image": "/images/hearts.jpg",
-    "description": "Romantic hearts wall art perfect for expressing love. Ideal for bedrooms, nurseries, or as a thoughtful gift for loved ones."
+    "description": "Romantic hearts wall art perfect for expressing love. Ideal for bedrooms, nurseries, or as a thoughtful gift for loved ones.",
+    "category": "romantic"
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "price": 15.5,
     "quantity": 1,
     "image": "/images/puppy.jpg",
-    "description": "Adorable puppy portrait capturing the innocence and charm of man's best friend. A heartwarming addition to any animal lover's home."
+    "description": "Adorable puppy portrait capturing the innocence and charm of man's best friend. A heartwarming addition to any animal lover's home.",
+    "category": "animal"
   },
   {
     "id": 7,
@@ -53,6 +59,7 @@
     "price": 15.5,
     "quantity": 1,
     "image": "/images/Woman.jpg",
-    "description": "Empowering woman silhouette artwork celebrating femininity and strength. A striking piece for modern, fashion-forward interiors."
+    "description": "Empowering woman silhouette artwork celebrating femininity and strength. A striking piece for modern, fashion-forward interiors.",
+    "category": "silhouette"
   }
 ]

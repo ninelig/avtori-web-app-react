@@ -1,43 +1,83 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import FAQ from "./pages/FAQ";
-import Terms from "./pages/Terms";
-import Home from "./pages/home";
-import Login from "./pages/Login"; 
-import NotFound from "./pages/NotFound";
-import RegisterPage from "./pages/RegisterPage";
-import Google from "./pages/Google";
-import Cart from "./pages/Cart";
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { ToastContainer } from 'react-toastify';
+import React from 'react';
+import {MainLayout} from "./components/layouts";
 import { CartProvider } from "./providers/CartProvider";
-import Shop from "./pages/Shop";
-import SingleProduct from "./pages/SingleProduct";
-// import ProductGrid from "./components/ProductGrid";
+import Spinner from "./components/ui/Spinner";
+import { GuestRoute, ProtectedRoute } from "./helpers/routes";
+import { AuthProvider } from "./providers/AuthProvider";
+import {
+  AboutPage,
+  CartPage,
+  ContactPage,
+  FaqPage,
+  GooglePage,
+  HomePage,
+  LoginPage,
+  NotFoundPage,
+  RegisterPage,
+  ShopPage,
+  SingleProductPage,
+  TermsPage
+} from './pages';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
+    <QueryClientProvider client={ queryClient }>
+      <React.Suspense fallback={<Spinner />}>
+      <AuthProvider>
     <CartProvider> 
     <Router>
-      <Layout>
+      <MainLayout>
         <Routes>
-          <Route path="/shop" element={<Shop />} />
-          {/* <Route path="/product" element={<ProductGrid />} /> */}
-          <Route path="/products/:productId" element={<SingleProduct />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/google" element={<Google/>} />
-            <Route path="/register" element={<RegisterPage />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/*" element={<NotFound />} />
-          <Route path="/cart" element={<Cart />} />
+
+          {/* Public pages */}
+          <Route path="/" element={<HomePage />} />
+          <Route path="/shop" element={<ShopPage />} />
+          <Route path="/products/:productId" element={<SingleProductPage />} />
+          <Route path="/google" element={<GooglePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/faq" element={<FaqPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+
+
+           {/* Guest-only pages */}
+          <Route path="/login" element={
+            <GuestRoute>
+               <LoginPage />
+             </GuestRoute>
+            } />
+          <Route path="/register" element={
+             <GuestRoute>
+               <RegisterPage />
+             </GuestRoute>
+            } />
+
+          
+          
+           {/* Protected pages */}
+          <Route path="/cart" element={
+            //  <ProtectedRoute>
+               <CartPage />
+            //  </ProtectedRoute>
+            } />
+
+  
+
+          {/* Fallback */}
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
-      </Layout>
+      </MainLayout>
     </Router>
     </CartProvider>
+    </AuthProvider>
+    <ToastContainer />
+    </React.Suspense>
+	</QueryClientProvider>
   );
 }
 

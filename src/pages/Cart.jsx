@@ -2,11 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import { useCart } from "../providers/CartProvider";
 import { fetchProducts } from "../api/productApi";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import Spinner from "../components/ui/Spinner";
 
 function Cart() {
   const { cart, addToCart, removeFromCart, clearCart, increaseQty, decreaseQty  } = useCart();
 
-  const [products, setProducts] = useState([]);
+/*   const [products, setProducts] = useState([]);
   useEffect(() => {
     if (cart?.length) {
       fetchProducts(cart?.map(({id}) => id) || [])
@@ -14,7 +16,17 @@ function Cart() {
     } else {
       setProducts([]);
     }
-  }, [cart])
+  }, [cart]) */
+
+
+   // Fetch products in the cart
+  const { data: products = [], isLoading, isError, error } = useQuery({
+    queryKey: ["cartProducts", cart.map(item => item.id)],
+    queryFn: () => fetchProducts(cart.map(item => item.id)),
+     enabled: cart.length > 0, // don't fetch if cart is empty
+      staleTime: 1000 * 60 * 5, // cache for 5 min
+      refetchOnWindowFocus: false,
+  });
 
 
   const preparedCartItems = useMemo(() => {
@@ -26,15 +38,20 @@ function Cart() {
   }, [products, cart]) 
 
 
-  const handleItemQuantityChange = (item, evt) => {
-    //console.log(evt)
+/*   const handleItemQuantityChange = (item, evt) => {
     const qty = evt.target.value - item.qty
     addToCart(item.id, qty);
-  }
+  } */
 
   const totalAmount = useMemo(() => {
     return preparedCartItems?.reduce((acc, item) => acc + item.price, 0) || 0;
   }, [preparedCartItems]);
+
+
+
+    if (isLoading) {
+      return <Spinner />
+    }
 
 return (
     <div className="container mx-auto p-6">
@@ -70,12 +87,14 @@ return (
                 className="hover:bg-gray-50 transition duration-150"
               >
                 <td className="py-4 px-6 flex items-center gap-4">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-16 h-16 object-cover rounded-lg"
-                  />
-                  <span className="font-medium text-gray-800">{item.name}</span>
+                  <Link to={`/products/${item.id}`}>
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-16 h-16 object-cover rounded-lg"
+                    />
+                    <span className="font-medium text-gray-800">{item.name}</span>
+                  </Link>
                 </td>
                 <td className="py-4 px-6 text-gray-700">${item.price.toFixed(2)}</td>
                 <td className="py-4 px-6 text-center">
