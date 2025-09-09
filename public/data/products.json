@@ -61,5 +61,59 @@
     "image": "/images/Woman.jpg",
     "description": "Empowering woman silhouette artwork celebrating femininity and strength. A striking piece for modern, fashion-forward interiors.",
     "category": "silhouette"
+  },
+  {
+    "id": 8,
+    "name": "stich",
+    "price": 20,
+    "quantity": 1,
+    "image": "/images/stich.jpg",
+    "description": "he mischievous blue alien from Disney’s Lilo & Stitch.",
+    "category": "spiritual"
+  },
+    {
+    "id": 9,
+    "name": "sakura",
+    "price": 100,
+    "quantity": 1,
+    "image": "/images/sakura.webp",
+    "description": "Beauty & Femininity: Sakura flowers represent grace, elegance, and the fleeting beauty of life.",
+    "category": "silhouette"
+    },
+       {
+    "id": 10,
+    "name": "wings",
+    "price": 40,
+    "quantity": 1,
+    "image": "/images/wings.webp",
+    "description": "Angel wings symbolize purity, guidance, and connection to higher powers.",
+    "category": "spiritual"
+    },
+    {
+    "id": 11,
+    "name": "kitty",
+    "price": 30,
+    "quantity": 1,
+    "image": "/images/kitty.webp",
+    "description": "The tattoo balances playfulness and charm, perfect for someone who loves cats, music, and floral elements.",
+    "category": "animal"
+    },
+      {
+    "id": 12,
+    "name": "maori",
+    "price": 30,
+    "quantity": 1,
+    "image": "/images/maori-tattoo.jpg",
+    "description": "Tribal Patterns: May reflect protection, warrior spirit, family lineage, or connection to nature and the ocean.",
+    "category": "spiritual"
+  },
+    {
+    "id": 13,
+    "name": "dragon",
+    "price": 100,
+    "quantity": 1,
+    "image": "/images/dragon.webp",
+    "description": "stunning full-back tattoo featuring a traditional Asian dragon entwined with cherry blossoms..",
+    "category": "silhouette"
   }
 ]

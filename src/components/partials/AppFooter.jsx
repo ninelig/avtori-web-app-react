@@ -10,8 +10,7 @@ export default function AppFooter() {
         <div>
           <h2 className="text-2xl font-bold text-white mb-4">ShopEase</h2>
           <p className="text-gray-400 text-sm">
-            Your one-stop shop for the best deals on fashion, electronics,
-            and more. Quality products, fast delivery, and secure checkout.
+            “Custom tattoos, crafted with precision and passion. Unique designs, expert artistry, and a safe, professional experience.”
           </p>
         </div>
 

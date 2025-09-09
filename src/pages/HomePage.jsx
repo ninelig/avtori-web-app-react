@@ -23,10 +23,10 @@ export default function HomePage() {
       {/* Hero content */}
       <div className="relative z-10 text-center text-white px-6">
         <h1 className="text-5xl md:text-7xl font-bold mb-4">
-          Welcome to Our Store
+         Your Tattoo Journey Starts Here.
         </h1>
         <p className="text-lg md:text-2xl mb-6">
-          Discover amazing products just for you
+            Ink That Speaks Your Story!
         </p>
         <Link to="/shop" className="px-6 py-3 bg-white text-black font-semibold rounded-full shadow-lg hover:bg-gray-200 transition">
           Shop Now
@@ -41,7 +41,7 @@ export default function HomePage() {
             Wear the Art. Live the Ink.
           </h1>
           <p className="text-lg md:text-xl mb-6">
-            Unique tattoo-inspired apparel, prints, and accessories.
+            Unique tattoo, prints, and accessories.
           </p>
           <div className="flex justify-center gap-4">
             <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700">
@@ -55,7 +55,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Collections */}
-      <section className="py-16 max-w-6xl mx-auto px-4">
+      <section className="py-16 max-w-6xl mx-auto px-4"style={{ backgroundImage: "url('/images/home_top-scaled.jpg')" }}>
         <h2 className="text-3xl font-bold mb-8 text-center">Collections</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {["Apparel", "Prints & Posters", "Tattoo Supplies", "Accessories"].map(
@@ -101,7 +101,7 @@ export default function HomePage() {
       {/* About the Artist */}
       <section className="py-16 max-w-4xl mx-auto px-4 text-center">
         <img
-          src="/images/artist.jpg"
+          src="/images/facetattoo.jpg"
           alt="Tattoo Artist"
           className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-indigo-600"
         />
