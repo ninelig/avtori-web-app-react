@@ -1,70 +1,146 @@
-# Getting Started with Create React App
+# 🎨 Tattoo-Avtori E-Commerce Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An e-commerce platform for a tattoo artist, built with **React.js**.  
+The website allows users to explore tattoo artworks, read about the artist, shop products, manage their cart, and authenticate securely.  
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+- **Home Page**
+  - Hero section with bold branding.
+  - Bestsellers showcase.
+  - Testimonials from clients.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Shop**
+  - Product listing with images, descriptions, and prices.
+  - Category filter for easy browsing.
+  - Single product detail pages.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Cart**
+  - Add, remove, and manage items.
+  - Cart badge with item count in header.
 
-### `npm test`
+- **Authentication**
+  - Login and Register pages.
+  - Authentication handled via **Context API**.
+  - Protected routes for logged-in users.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Pages**
+  - About
+  - FAQ
+  - Terms & Conditions
+  - Contact
 
-### `npm run build`
+- **Responsive Design**
+  - Fully responsive layout with mobile-friendly navigation (hamburger menu).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Frontend Framework**: [React.js](https://reactjs.org/)
+- **Forms & Validation**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+- **State Management**: Context API (for Authentication & Cart)
+- **Routing**: [React Router DOM](https://reactrouter.com/)
+- **UI & Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📂 Project Structure
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+src/
+│── components/        # Reusable UI components (Header, Footer, ProductCard, etc.)
+│── pages/             # Page components (Home, Shop, About, Contact, etc.)
+│── providers/         # Context providers (AuthProvider, CartProvider)
+│── hooks/             # Custom hooks if any
+│── api/               # API helpers (mock/fetch functions)
+│── App.js             # Main app entry point
+│── index.js           # React DOM rendering
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## ⚙️ Installation & Setup
 
-## Learn More
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/tattoo-avtori-ecommerce.git
+   cd tattoo-avtori-ecommerce
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. **Run the development server**
+   ```bash
+   npm start
+   ```
 
-### Code Splitting
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🔑 Authentication
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Authentication state is managed with **Context API**.
+- Fake tokens are stored in **localStorage**.
+- Protected routes redirect unauthorized users to the login page.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🛒 Cart Functionality
 
-### Advanced Configuration
+- Add/remove products from the cart.
+- Cart state managed with **Context API**.
+- Cart persists in session/local storage (optional extension).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 📌 Roadmap / Future Improvements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Add product search functionality.
+- Improve animations and transitions.
+- Integrate real backend (Node.js / Express + Database).
+- Checkout and Payment gateway integration (Stripe/PayPal).
+- Admin dashboard for managing products, orders, etc.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📸 Screenshots
+
+### 🏠 Home Page
+
+![Home Page](screenshots/home.png)
+
+### 🛍️ Shop Page
+
+![Shop Page](screenshots/shop.png)
+
+### 📄 Single Product Page
+
+![Single Product Page](screenshots/product.png)
+
+### 🛒 Cart Page
+
+![Cart Page](screenshots/cart.png)
+
+### 🔑 Login Page
+
+![Login Page](screenshots/login.png)
+
+### 🆕 Register Page
+
+![Register Page](screenshots/register.png)
+
+
+---
+
+👩‍🎨 Developed for **Tattoo-Avtori** — a modern e-commerce experience for tattoo lovers.

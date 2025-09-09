@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query';
 import { Link, useParams } from 'react-router-dom';
 import { fetchProductById, fetchProductById1 } from '../api/productApi';
 import { useCart } from '../providers/CartProvider';
-import { toast } from 'react-toastify';
 import Spinner from '../components/ui/Spinner';
 import Alert from '../components/ui/Alert';
 
@@ -46,7 +45,7 @@ function SingleProduct() {
     const doAddToCart = () => {
       if (product && quantity) {
         addToCart(product.id, quantity)
-        toast.success('პროდუქტი ჩავარდა კალათაში', {position: 'bottom-right',})
+      
       }
     }
 

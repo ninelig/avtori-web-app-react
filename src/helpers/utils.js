@@ -24,7 +24,7 @@ export async function fetchWithErrorHandling(url, options = {}) {
 		} );
 
 		// Check if the response is successful
-		if ( ! response.ok ) {
+		if (  !response.ok ) {
 			//const errorMessage = await response.text(); // Get error message from response
 			//throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorMessage}`);
 
@@ -33,7 +33,7 @@ export async function fetchWithErrorHandling(url, options = {}) {
 		}
 
 		// Parse JSON response if successful
-		const data: T = await response.json();
+		const data = await response.json();
 		return data; // Return the parsed data
 	} catch ( error ) {
 		// Handle errors during the fetch operation

@@ -8,7 +8,7 @@ export default function AppFooter() {
         
         {/* Brand / About */}
         <div>
-          <h2 className="text-2xl font-bold text-white mb-4">ShopEase</h2>
+          <h2 className="text-2xl font-bold text-white mb-4">Tattoo-Avtori</h2>
           <p className="text-gray-400 text-sm">
             “Custom tattoos, crafted with precision and passion. Unique designs, expert artistry, and a safe, professional experience.”
           </p>
@@ -62,7 +62,7 @@ export default function AppFooter() {
 
       {/* Bottom bar */}
       <div className="mt-10 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
-        © {new Date().getFullYear()} ShopEase. All rights reserved.
+        © {new Date().getFullYear()} Tattoo-Avtori. All rights reserved.
       </div>
     </footer>
   );

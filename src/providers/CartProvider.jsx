@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { toast } from 'react-toastify';
 
 const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
@@ -43,6 +44,8 @@ export const CartProvider = ({ children }) => {
       }
       return [...prev, { id, qty: quantity }];
     });
+
+      toast.success('პროდუქტი ჩავარდა კალათაში', {position: 'bottom-right'})
   };
 
   const removeFromCart = (id) => {

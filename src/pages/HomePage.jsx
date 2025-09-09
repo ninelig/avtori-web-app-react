@@ -1,7 +1,37 @@
 import { Link } from "react-router-dom";
+import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, Button } from "../components/ui";
+import { fetchProducts } from "../api/productApi";
+import { useMemo } from "react";
+import { useCart } from "../providers/CartProvider";
 
 export default function HomePage() {
+
+      const {addToCart} = useCart();
+
+    const {
+      data: products,
+      isSuccess,
+      refetch,
+      isLoading,
+      isRefetching,
+      isError,
+      error,
+    } = useQuery( {
+      //queryKey: ['orders', request],
+      queryKey: [ 'products' ],
+      queryFn: () => fetchProducts(),
+      enabled: true,
+      refetchOnMount: true,
+      refetchOnWindowFocus: false,
+      //staleTime: 0
+    } );
+
+
+    const bestsellers = useMemo(() => {
+      return products?.filter(p => p.popular) || []
+    }, [products])
+
   return (
     <div className="bg-gray-950 text-gray-100">
       {/* Hero Section */}
@@ -33,7 +63,7 @@ export default function HomePage() {
         </Link>
       </div>
     </section>
-      <section className="relative h-[80vh] flex flex-col justify-center items-center text-center bg-cover bg-center"
+      <section className="relative h-[80vh] flex flex-col justify-center items-center text-center bg-cover bg-center hidden"
                style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}>
         <div className="bg-black/60 absolute inset-0"></div>
         <div className="relative z-10 max-w-3xl px-4">
@@ -55,7 +85,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Collections */}
-      <section className="py-16 max-w-6xl mx-auto px-4"style={{ backgroundImage: "url('/images/home_top-scaled.jpg')" }}>
+      <section className="py-16 max-w-6xl mx-auto px-4 hidden"style={{ backgroundImage: "url('/images/home_top-scaled.jpg')" }}>
         <h2 className="text-3xl font-bold mb-8 text-center">Collections</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {["Apparel", "Prints & Posters", "Tattoo Supplies", "Accessories"].map(
@@ -80,17 +110,17 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center">Bestsellers</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((id) => (
-              <Card key={id} className="overflow-hidden">
+            { bestsellers.map((prod) => (
+              <Card key={prod.id} className="overflow-hidden">
                 <img
-                  src={`/images/product-${id}.jpg`}
-                  alt={`Product ${id}`}
+                  src={prod.image}
+                  alt={prod.name}
                   className="w-full h-64 object-cover"
                 />
                 <CardContent className="p-4">
-                  <h3 className="text-lg font-semibold mb-2">Product {id}</h3>
-                  <p className="mb-2">$29.99</p>
-                  <Button className="w-full bg-indigo-600 hover:bg-indigo-700">Add to Cart</Button>
+                  <h3 className="text-lg font-semibold mb-2">{prod.name}</h3>
+                  <p className="mb-2">{prod.price}</p>
+                  <Button onClick={() => addToCart(prod.id)} className="w-full bg-indigo-600 hover:bg-indigo-700">Add to Cart</Button>
                 </CardContent>
               </Card>
             ))}

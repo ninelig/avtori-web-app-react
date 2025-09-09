@@ -92,7 +92,7 @@ export default function RegisterPage() {
               className={`block w-full rounded-lg border px-3 py-2 pr-12 focus:outline-none focus:ring-2 focus:ring-offset-1 ${
                 errors.password ? "border-red-500" : "border-gray-200"
               }`}
-              placeholder="At least 8 characters"
+              placeholder="At least 6 characters"
               aria-invalid={errors.password ? "true" : "false"}
             />
             <button
