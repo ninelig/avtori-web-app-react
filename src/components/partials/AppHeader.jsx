@@ -88,6 +88,12 @@ export default function AppHeader({ cartLength = 0 }) {
               >
                 Register
               </NavLink>
+               <NavLink
+                to="/google"
+                className="px-3 py-1 rounded bg-yellow-600 text-white hover:bg-blue-700 text-sm font-medium"
+              >
+                google login
+              </NavLink>
             </>
           )}
 
