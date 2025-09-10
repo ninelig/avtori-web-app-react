@@ -39,12 +39,16 @@ The website allows users to explore tattoo artworks, read about the artist, shop
 
 ## 🛠️ Tech Stack
 
-- **Frontend Framework**: [React.js](https://reactjs.org/)
-- **Forms & Validation**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
-- **State Management**: Context API (for Authentication & Cart)
-- **Routing**: [React Router DOM](https://reactrouter.com/)
-- **UI & Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
+| Category               | Technology                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| **Frontend Framework** | [React.js](https://reactjs.org/)                                           |
+| **Forms & Validation** | [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)  |
+| **State Management**   | Context API (for Authentication & Cart)                                    |
+| **Routing**            | [React Router DOM](https://reactrouter.com/)                               |
+| **UI & Styling**       | [Tailwind CSS](https://tailwindcss.com/)                                   |
+| **Icons**              | [React Icons](https://react-icons.github.io/react-icons/)                  |
+| **Data Fetching**      | [TanStack Query](https://tanstack.com/query/latest)                        |
+
 
 ---
 
@@ -56,6 +60,7 @@ src/
 │── pages/             # Page components (Home, Shop, About, Contact, etc.)
 │── providers/         # Context providers (AuthProvider, CartProvider)
 │── hooks/             # Custom hooks if any
+│── helpers/           # Helper functions if any
 │── api/               # API helpers (mock/fetch functions)
 │── App.js             # Main app entry point
 │── index.js           # React DOM rendering
